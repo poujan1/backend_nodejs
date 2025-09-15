@@ -5,7 +5,8 @@
 // transitive dependencies
 
 // homework //
-
+// js is synchonous single threaded language, then how node js is non blocking and asynchronous?
+// libuv
 // single threaded language
 // process vs thread
 // why node js is non - blocking??

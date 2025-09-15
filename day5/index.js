@@ -1,11 +1,14 @@
 // express
 // express is node js framework for building web applications.
 // http use garera server banayau ho?
-// third party module
+// third party module (package)
+// CRUD operations
 // http methods -- GET POST PUT DELETE PATCH
 // version 1.0.0. --- > 12.11.1
 // caret vs tilda ^ vs ~
 // version change ---
+// why express instead of http?
+// routes , url, uri
 
 const express = require("express");
 

@@ -1,6 +1,6 @@
 const adminMiddleware = (req, res, next) => {
   console.log("admin middleware called");
-  const adminName = "priynka";
+  const adminName = "pujan";
   if (adminName === "pujan") {
     next();
   } else {

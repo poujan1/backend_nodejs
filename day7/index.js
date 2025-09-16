@@ -14,6 +14,11 @@ const {
 const server = express();
 const PORT = 8000;
 
+// query parameters and path variables ---> through url
+// request body
+// request headers
+// form data
+
 // app level middleware
 // route level middleware
 // route handler or request handler
@@ -34,7 +39,8 @@ const PORT = 8000;
 // server.post("/home", homeController);
 // server.get("/contact", contactController);
 
-server.use("/admin", adminMiddleware);
+// server.use("/admin", adminMiddleware);
+// server.get("/admin/profile/:username", adminProfileController);
 server.get("/admin/profile", adminProfileController);
 server.get("/admin/getAdmin", getAdminController);
 server.get("/admin/password", adminPasswordController);

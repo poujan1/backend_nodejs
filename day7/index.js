@@ -41,6 +41,7 @@ const PORT = 8000;
 
 // server.use("/admin", adminMiddleware);
 // server.get("/admin/profile/:username", adminProfileController);
+
 server.get("/admin/profile", adminProfileController);
 server.get("/admin/getAdmin", getAdminController);
 server.get("/admin/password", adminPasswordController);

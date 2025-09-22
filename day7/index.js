@@ -1,9 +1,13 @@
 const express = require("express");
+
 const { adminMiddleware } = require("./middlewares/admin.middleware.js");
+
 const {
   adminProfileController,
 } = require("./controllers/admin.profile.controller.js");
+
 const { getAdminController } = require("./controllers/get.admin.controller.js");
+
 const {
   adminPasswordController,
 } = require("./controllers/admin.password.controller.js");

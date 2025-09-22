@@ -3,16 +3,11 @@ const express = require("express");
 const server = express();
 
 // localhost
-// request handler
+// request ,route handler
 // req,res object
 // order matters
-// get post put patch delete
+// get post put patch delete --- http methods
 // use la chai sabai http methods lai match garne vayo
-
-server.use("/home", (req, res) => {
-  console.log("this is home get  route");
-  res.send("this is get home route");
-});
 
 server.post("/home", (req, res) => {
   console.log("this is home post route");
@@ -31,6 +26,11 @@ server.post("/profile", (req, res) => {
 server.get("/", (req, res) => {
   console.log("This is / route");
   res.send("this is / route");
+});
+
+server.use("/home", (req, res) => {
+  console.log("this is home get  route");
+  res.send("this is get home route");
 });
 
 server.listen(1234, (err) => {

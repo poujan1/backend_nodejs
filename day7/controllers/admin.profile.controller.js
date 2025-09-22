@@ -14,4 +14,5 @@ const adminProfileController = (req, res) => {
   res.send("accessing profile of admin");
 };
 
+
 module.exports = { adminProfileController };

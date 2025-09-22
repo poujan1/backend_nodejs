@@ -60,6 +60,12 @@ server.get("/user/getUser", (req, res) => {
   res.send("Getting user information");
 });
 
+// server.use("/", (err, req, res, next) => {
+//   if (err) {
+//     res.status(500).send("Somthing went wrong");
+//   }
+// });
+
 server.listen(PORT, (err) => {
   if (err) {
     console.log(err);

@@ -2,6 +2,12 @@ const express = require("express");
 
 // schema , models ,mongoose ,object destructuring,simple mongoose methods for create read update delete , why express.json()?
 
+// http methods
+
+// what are the diffrent ways client could send data to server? query path body....
+
+// what is happening behind the scenes whenn we are sending create request to the server after connecting to the database?
+
 const { connectDb } = require("./config/db.js");
 const User = require("./models/user.js");
 

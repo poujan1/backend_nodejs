@@ -8,6 +8,9 @@ const express = require("express");
 
 // what is happening behind the scenes whenn we are sending create request to the server after connecting to the database?
 
+// user create garne , user get garne , user update garne ,user delete garne
+
+// mongoose documentation (schema methods )
 const { connectDb } = require("./config/db.js");
 const User = require("./models/user.js");
 

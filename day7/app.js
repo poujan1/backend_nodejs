@@ -11,6 +11,9 @@ const express = require("express");
 // user create garne , user get garne , user update garne ,user delete garne
 
 // mongoose documentation (schema methods )
+
+// yo jun hamle route hanlder banayem,yslai controller ma shift garne ra code lai modular banauna khojne ani try catch use garne
+
 const { connectDb } = require("./config/db.js");
 const User = require("./models/user.js");
 
@@ -22,14 +25,24 @@ const PORT = 3333;
 
 server.post("/user", async (req, res) => {
   const { firstName, lastName, username, email } = req.body;
-  const user = new User({
-    firstName: firstName,
-    lastName: lastName,
-    username: username,
-    email: email,
-  });
 
-  await user.save();
+  try {
+    const user = new User({
+      firstName: firstName,
+      lastName: lastName,
+      username: username,
+      email: email,
+    });
+
+    await user.save();
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error,
+    });
+  }
 
   res.status(201).json({
     success: true,
@@ -54,3 +67,7 @@ connectDb()
   .catch((error) => {
     console.log(error);
   });
+
+server.use("/", (err, req, res, next) => {
+  // if some route is not found you should be sending response route not found
+});

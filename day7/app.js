@@ -17,6 +17,16 @@ const User = require("./models/user.js");
 //
 
 const { connectDb } = require("./config/db.js");
+
+const {
+  signupController,
+  getUserController,
+  updateUserController,
+  deleteUserController,
+  loginController,
+} = require("./controllers/user.controller.js");
+
+// const { adminPasswordController } = require("./controllers/admin.password.controller.js");
 // json vs jsObject
 const server = express();
 server.use(express.json());
@@ -52,74 +62,11 @@ const PORT = 3333;
 
 // server.get("/user", (req, res) => {});
 
-server.post("/user", async (req, res) => {
-  const { username, password, email } = req.body;
-  try {
-    const user = new User({
-      username: username,
-      password: password,
-      email: email,
-    });
-
-    await user.save();
-
-    res.status(201).json({
-      success: true,
-      message: "user created successfully",
-      data: user,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Internal server error",
-      error: error,
-    });
-  }
-});
-
-server.get("/user", async (req, res) => {
-  //read
-  try {
-    const users = await User.find({ username: "ridikshya" });
-    res.status(200).json({
-      success: true,
-      message: "user fetched successfully",
-      data: users,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Internal server error",
-      error: error,
-    });
-  }
-  await User.find({});
-});
-
-server.patch("/user", async (req, res) => {
-  // update
-  const { filter, nameToChange } = req.body;
-  try {
-    const user = await User.findOneAndUpdate(
-      { username: filter },
-      { username: nameToChange }
-    );
-    res.status(200).json({
-      success: true,
-      message: "user updated successfully",
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Internal server error",
-      error: error,
-    });
-  }
-});
-
-server.delete("/user", (req, res) => {
-  // delete
-});
+server.post("/signup", signupController);
+server.post("/login", loginController);
+server.get("/user", getUserController);
+server.patch("/user", updateUserController);
+server.delete("/user", deleteUserController);
 
 connectDb()
   .then(() => {

@@ -1,4 +1,4 @@
-// ODM -- mongoose
+// ODM
 
 const mongoose = require("mongoose");
 const { Schema } = mongoose;

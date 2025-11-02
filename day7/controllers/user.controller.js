@@ -2,7 +2,21 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 const signupController = async (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({
+      success: false,
+      message: "body is required",
+    });
+  }
   const { username, password, email } = req.body;
+
+  if (!username || !password || !email) {
+    return res.status(400).json({
+      success: false,
+      message: "username or password or email is required",
+    });
+  }
+
   try {
     const SALT_ROUNDS = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);

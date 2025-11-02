@@ -84,5 +84,5 @@ connectDb()
   });
 
 // server.use("/", (err, req, res, next) => {
-//   // if some route is not found you should be sending response route not found
+// if some route is not found you should be sending response route not found
 // });

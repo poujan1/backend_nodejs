@@ -8,12 +8,29 @@ const signupController = async (req, res) => {
       message: "body is required",
     });
   }
-  const { username, password, email } = req.body;
+  const { username, password, email } = req?.body;
+
+  const passowrdRegx =
+    /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+  const emailRegx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!username || !password || !email) {
     return res.status(400).json({
       success: false,
       message: "username or password or email is required",
+    });
+  }
+  if (!passowrdRegx.test(password)) {
+    return res.status(400).json({
+      success: false,
+      message: "password should be 8 characters should be uppercase....",
+    });
+  }
+
+  if (!emailRegx.test(email)) {
+    return res.status(400).json({
+      success: false,
+      message: "email format is incorrect",
     });
   }
 
@@ -47,6 +64,14 @@ const getUserController = async (req, res) => {
   //read
   try {
     const users = await User.find({ username: "ridikshya" });
+
+    if (!users) {
+      return res.status(400).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
     res.status(200).json({
       success: true,
       message: "user fetched successfully",
@@ -59,12 +84,15 @@ const getUserController = async (req, res) => {
       error: error,
     });
   }
-  await User.find({});
 };
 
 const updateUserController = async (req, res) => {
   // update
   const { filter, nameToChange } = req.body;
+
+  // if (nameToChange.length >= 50) {
+  //   // code here
+  // }
   try {
     const user = await User.findOneAndUpdate(
       { username: filter },

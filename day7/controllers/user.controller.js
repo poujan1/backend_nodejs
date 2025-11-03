@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 
 const signupController = async (req, res) => {
   if (!req.body) {
@@ -149,10 +150,13 @@ const loginController = async (req, res) => {
       });
     }
 
+    const token = await jwt.sign({ _id: user._id }, "dsajkfhpadwisfhieosdl");
+
     res.status(200).json({
       success: true,
       message: "Login successful",
       data: user,
+      token: token,
     });
   } catch (error) {
     res.status(500).json({
@@ -163,10 +167,20 @@ const loginController = async (req, res) => {
   }
 };
 
+const profileController = async (req, res) => {
+  res.send("this is profile route");
+};
+
+const feedController = async (req, res) => {
+  res.send("this is feed route");
+};
+
 module.exports = {
   signupController,
   loginController,
   getUserController,
   updateUserController,
   deleteUserController,
+  profileController,
+  feedController,
 };

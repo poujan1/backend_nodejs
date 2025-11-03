@@ -1,5 +1,5 @@
 const adminPasswordController = (req, res) => {
-  console.log("admin password");
+  console.log("admin passwrd");
   // const adminName = "pujan";
   // if (adminName === "pujan") {
   //   res.status(200).send("Accessing password of admin");

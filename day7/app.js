@@ -1,4 +1,5 @@
 const express = require("express");
+const cookie_parser = require("cookie-parser");
 
 const authRoutes = require("./routes/auth.routes.js");
 const userRoutes = require("./routes/user.routes.js");
@@ -7,6 +8,7 @@ const { connectDb } = require("./config/db.js");
 
 const server = express();
 server.use(express.json());
+server.use(cookie_parser());
 const PORT = 3333;
 
 server.use("/auth", authRoutes);
